@@ -56,11 +56,11 @@
 			isa = PBXGroup;
 			children = (
 				F77F86DF2C5DD7440071FA2C /* ReactiveStoreAppApp.swift */,
-				F77F86E12C5DD7440071FA2C /* ContentView.swift */,
+				F77F86FA2C5E91990071FA2C /* Models */,
+				F77F86F92C5E91830071FA2C /* Views */,
+				F77F86F82C5E91740071FA2C /* WebSocket */,
 				F77F86E32C5DD7460071FA2C /* Assets.xcassets */,
 				F77F86E52C5DD7460071FA2C /* Preview Content */,
-				F77F86ED2C5DD7650071FA2C /* WebSocketClient.swift */,
-				F77F86EF2C5DD7A60071FA2C /* Models.swift */,
 			);
 			path = ReactiveStoreApp;
 			sourceTree = "<group>";
@@ -71,6 +71,30 @@
 				F77F86E62C5DD7460071FA2C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F77F86F82C5E91740071FA2C /* WebSocket */ = {
+			isa = PBXGroup;
+			children = (
+				F77F86ED2C5DD7650071FA2C /* WebSocketClient.swift */,
+			);
+			path = WebSocket;
+			sourceTree = "<group>";
+		};
+		F77F86F92C5E91830071FA2C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F77F86E12C5DD7440071FA2C /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F77F86FA2C5E91990071FA2C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F77F86EF2C5DD7A60071FA2C /* Models.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

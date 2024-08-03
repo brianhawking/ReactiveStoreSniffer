@@ -16,6 +16,7 @@
 		F77F86CE2C5DA25F0071FA2C /* EntryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77F86CD2C5DA25F0071FA2C /* EntryListView.swift */; };
 		F77F86D02C5DA2810071FA2C /* EntryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77F86CF2C5DA2810071FA2C /* EntryDetailView.swift */; };
 		F77F86D22C5DC04B0071FA2C /* WebSocketServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77F86D12C5DC04B0071FA2C /* WebSocketServer.swift */; };
+		F77F86F32C5E8EB00071FA2C /* DateFormmater.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77F86F22C5E8EB00071FA2C /* DateFormmater.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		F77F86CD2C5DA25F0071FA2C /* EntryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryListView.swift; sourceTree = "<group>"; };
 		F77F86CF2C5DA2810071FA2C /* EntryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDetailView.swift; sourceTree = "<group>"; };
 		F77F86D12C5DC04B0071FA2C /* WebSocketServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketServer.swift; sourceTree = "<group>"; };
+		F77F86F22C5E8EB00071FA2C /* DateFormmater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormmater.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,14 +64,13 @@
 			isa = PBXGroup;
 			children = (
 				F77F86BB2C5DA1430071FA2C /* ReactiveStoreSniffer9000App.swift */,
-				F77F86BD2C5DA1430071FA2C /* ContentView.swift */,
-				F77F86BF2C5DA1450071FA2C /* Assets.xcassets */,
+				F77F86F72C5E8F2C0071FA2C /* Mocks */,
+				F77F86F62C5E8F0C0071FA2C /* WebSocket */,
+				F77F86F52C5E8EF40071FA2C /* Models */,
+				F77F86F42C5E8EE60071FA2C /* Views */,
 				F77F86C12C5DA1450071FA2C /* Preview Content */,
-				F77F86C92C5DA2170071FA2C /* Models.swift */,
-				F77F86CB2C5DA2430071FA2C /* MockData.swift */,
-				F77F86CD2C5DA25F0071FA2C /* EntryListView.swift */,
-				F77F86CF2C5DA2810071FA2C /* EntryDetailView.swift */,
-				F77F86D12C5DC04B0071FA2C /* WebSocketServer.swift */,
+				F77F86F12C5E8E980071FA2C /* Utilities */,
+				F77F86BF2C5DA1450071FA2C /* Assets.xcassets */,
 			);
 			path = ReactiveStoreSniffer9000;
 			sourceTree = "<group>";
@@ -80,6 +81,48 @@
 				F77F86C22C5DA1450071FA2C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F77F86F12C5E8E980071FA2C /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				F77F86F22C5E8EB00071FA2C /* DateFormmater.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		F77F86F42C5E8EE60071FA2C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F77F86BD2C5DA1430071FA2C /* ContentView.swift */,
+				F77F86CD2C5DA25F0071FA2C /* EntryListView.swift */,
+				F77F86CF2C5DA2810071FA2C /* EntryDetailView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F77F86F52C5E8EF40071FA2C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F77F86C92C5DA2170071FA2C /* Models.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F77F86F62C5E8F0C0071FA2C /* WebSocket */ = {
+			isa = PBXGroup;
+			children = (
+				F77F86D12C5DC04B0071FA2C /* WebSocketServer.swift */,
+			);
+			path = WebSocket;
+			sourceTree = "<group>";
+		};
+		F77F86F72C5E8F2C0071FA2C /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				F77F86CB2C5DA2430071FA2C /* MockData.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,6 +196,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F77F86D02C5DA2810071FA2C /* EntryDetailView.swift in Sources */,
+				F77F86F32C5E8EB00071FA2C /* DateFormmater.swift in Sources */,
 				F77F86CA2C5DA2170071FA2C /* Models.swift in Sources */,
 				F77F86CC2C5DA2430071FA2C /* MockData.swift in Sources */,
 				F77F86BE2C5DA1430071FA2C /* ContentView.swift in Sources */,

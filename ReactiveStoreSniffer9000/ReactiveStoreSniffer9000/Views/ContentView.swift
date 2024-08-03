@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var webSocketServer = WebSocketServer()
-
     var body: some View {
         EntryListView()
             .environmentObject(webSocketServer)

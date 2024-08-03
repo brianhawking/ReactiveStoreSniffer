@@ -10,7 +10,7 @@ import SwiftUI
 
 struct EntryDetailView: View {
     let entry: Entry
-    private let fixedHeight: CGFloat = 200 // Set your desired fixed height here
+    private let fixedHeight: CGFloat = 200
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -30,14 +30,14 @@ struct EntryDetailView: View {
                 ScrollView {
                     VStack(alignment: .leading) {
                         switch entry.details {
-                        case .action(let actionDetails):
-                            Text("Action Type: \(actionDetails.actionType)")
+                        case .dispatch(let actionDetails):
+                            Text("Action Type: \(actionDetails.action)")
                             Text("Payload:\n \(prettyPrintJSON(from: actionDetails.payload))")
-                        case .log(let logDetails):
+                        case .analytics(let logDetails):
                             Text("Log Level: \(logDetails.logLevel)")
                             Text("Log Message: \(logDetails.logMessage)")
                         case .state(let stateDetails):
-                            Text("State Data: \(prettyPrintJSON(from: stateDetails.stateData))")
+                            Text("State Data: \(prettyPrintJSON(from: stateDetails.state))")
                         }
                     }
                     .frame(width: geometry.size.width, alignment: .leading)

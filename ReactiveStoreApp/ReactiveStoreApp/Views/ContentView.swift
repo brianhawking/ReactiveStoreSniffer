@@ -18,8 +18,8 @@ struct ContentView: View {
                     timestamp: Date(),
                     eventType: "Analytics",
                     featureName: "Referrals",
-                    summary: "Referrals displayed",
-                    details: .log(LogDetails(logLevel: "info", logMessage: "Referrals displayed:savor:primary:personal:contentId-1"))
+                    summary: "Potomac - Referrals displayed:savor:primary:personal:contentId",
+                    details: .analytics(LogDetails(logLevel: "info", logMessage: "Referrals displayed:savor:primary:personal:contentId-1"))
                 )
                 webSocketClient.send(entry: entry)
             }
@@ -32,7 +32,7 @@ struct ContentView: View {
                     eventType: "State",
                     featureName: "Referrals",
                     summary: "{\"loadingState\": \".loaded(1)\", \"account\": \"Account\"}",
-                    details: .state(StateDetails(stateData: "{\"loadingState\": \".loaded(1)\", \"account\": \"Account\"}"))
+                    details: .state(StateDetails(state: "{\"loadingState\": \".loaded(1)\", \"account\": \"Account\"}"))
                 )
                 webSocketClient.send(entry: entry)
             }
@@ -45,7 +45,7 @@ struct ContentView: View {
                     eventType: "Action",
                     featureName: "Referrals",
                     summary: "setLoaded(.show(1))",
-                    details: .action(ActionDetails(actionType: "setLoaded(.show(1))", payload: "{\"contentId\": \"1\"}"))
+                    details: .dispatch(ActionDetails(action: "setLoaded(.show(1))", payload: "{\"contentId\": \"1\"}"))
                 )
                 webSocketClient.send(entry: entry)
             }

@@ -17,8 +17,8 @@ struct Entry: Identifiable, Codable {
 }
 
 enum EntryDetails: Codable {
-    case action(ActionDetails)
-    case log(LogDetails)
+    case dispatch(ActionDetails)
+    case analytics(LogDetails)
     case state(StateDetails)
     
     private enum CodingKeys: String, CodingKey {
@@ -36,10 +36,10 @@ enum EntryDetails: Codable {
         switch type {
         case .action:
             let data = try container.decode(ActionDetails.self, forKey: .data)
-            self = .action(data)
+            self = .dispatch(data)
         case .log:
             let data = try container.decode(LogDetails.self, forKey: .data)
-            self = .log(data)
+            self = .analytics(data)
         case .state:
             let data = try container.decode(StateDetails.self, forKey: .data)
             self = .state(data)
@@ -50,10 +50,10 @@ enum EntryDetails: Codable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         
         switch self {
-        case .action(let data):
+        case .dispatch(let data):
             try container.encode(EntryType.action, forKey: .type)
             try container.encode(data, forKey: .data)
-        case .log(let data):
+        case .analytics(let data):
             try container.encode(EntryType.log, forKey: .type)
             try container.encode(data, forKey: .data)
         case .state(let data):
@@ -64,8 +64,8 @@ enum EntryDetails: Codable {
 }
 
 struct ActionDetails: Codable {
-    let actionType: String
-    let payload: String // JSON string representation of the payload
+    let action: String
+    let payload: String
 }
 
 struct LogDetails: Codable {
@@ -74,6 +74,6 @@ struct LogDetails: Codable {
 }
 
 struct StateDetails: Codable {
-    let stateData: String // JSON string representation of the state data
+    let state: String
 }
 

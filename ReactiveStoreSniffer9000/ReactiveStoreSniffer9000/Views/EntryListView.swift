@@ -8,22 +8,19 @@
 import Foundation
 import SwiftUI
 
-let dateFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateFormat = "HH:mm:ss.SSS"
-    return formatter
-}()
-
 struct EntryListView: View {
     @EnvironmentObject var webSocketServer: WebSocketServer
     @State private var selectedEntry: Entry?
     @State private var filterText: String = ""
-
+    @State private var selectedEventType: String = "All"
+    
+    private var eventTypes = ["All", "Action", "Analytics", "State"]
+    
     private var entries: [Entry] {
         let allEntries = webSocketServer.logEntries.isEmpty ? mockEntries : webSocketServer.logEntries
         return filteredEntries(from: allEntries)
     }
-
+    
     var body: some View {
         VStack {
             HStack {
@@ -47,6 +44,14 @@ struct EntryListView: View {
                 }
                 .padding()
             }
+            
+            Picker("Event Type", selection: $selectedEventType) {
+                ForEach(eventTypes, id: \.self) { eventType in
+                    Text(eventType).tag(eventType)
+                }
+            }
+            .pickerStyle(SegmentedPickerStyle())
+            .padding()
             
             HStack {
                 Text("Timestamp")
@@ -80,6 +85,7 @@ struct EntryListView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                         Text(entry.summary)
                             .frame(maxWidth: .infinity, alignment: .leading)
+                            .lineLimit(1)
                     }
                     .padding()
                     .background(index % 2 == 0 ? Color.gray.opacity(0.1) : Color(.secondarySystemBackground))
@@ -103,10 +109,12 @@ struct EntryListView: View {
     }
     
     private func filteredEntries(from entries: [Entry]) -> [Entry] {
-        if filterText.isEmpty {
-            return entries
+        let textFilteredEntries = filterText.isEmpty ? entries : entries.filter { $0.featureName.lowercased().contains(filterText.lowercased()) }
+        
+        if selectedEventType == "All" {
+            return textFilteredEntries
         } else {
-            return entries.filter { $0.featureName.lowercased().contains(filterText.lowercased()) }
+            return textFilteredEntries.filter { $0.eventType.lowercased() == selectedEventType.lowercased() }
         }
     }
 }
