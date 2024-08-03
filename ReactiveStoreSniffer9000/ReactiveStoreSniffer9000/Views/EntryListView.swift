@@ -14,7 +14,7 @@ struct EntryListView: View {
     @State private var filterText: String = ""
     @State private var selectedEventType: String = "All"
     
-    private var eventTypes = ["All", "Action", "Analytics", "State"]
+    private var eventTypes = ["All", "Dispatch", "Analytics", "Monitor", "State"]
     
     private var entries: [Entry] {
         let allEntries = webSocketServer.logEntries.isEmpty ? mockEntries : webSocketServer.logEntries
@@ -111,10 +111,19 @@ struct EntryListView: View {
     private func filteredEntries(from entries: [Entry]) -> [Entry] {
         let textFilteredEntries = filterText.isEmpty ? entries : entries.filter { $0.featureName.lowercased().contains(filterText.lowercased()) }
         
-        if selectedEventType == "All" {
+        switch selectedEventType {
+        case "All":
             return textFilteredEntries
-        } else {
-            return textFilteredEntries.filter { $0.eventType.lowercased() == selectedEventType.lowercased() }
+        case "Dispatch":
+            return textFilteredEntries
+        case "Analytics":
+            return textFilteredEntries.filter { $0.featureName.lowercased() == selectedEventType.lowercased() }
+        case "Monitor":
+            return textFilteredEntries.filter { $0.eventType.lowercased() == "EaseMobileMonitor".lowercased() }
+        case "State":
+            return textFilteredEntries.filter { $0.eventType.lowercased() == "State".lowercased() }
+        default:
+            return textFilteredEntries
         }
     }
 }
